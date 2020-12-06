@@ -51,7 +51,7 @@ public class PromotionCouponCodeGeneratorImpl implements PromotionCouponCodeGene
     }
 
 
-    private int determineCouponSize(final Shop shop) {
+    public int determineCouponSize(final Shop shop) {
 
         if (shop != null) {
             final String av = shop.getAttributeValueByCode(AttributeNamesKeys.Shop.SHOP_COUPON_CODE_LENGTH);

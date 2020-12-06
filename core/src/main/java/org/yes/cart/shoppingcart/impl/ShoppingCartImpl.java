@@ -814,7 +814,7 @@ public class ShoppingCartImpl implements MutableShoppingCart {
     /**
      * Internal access to mutable items.
      */
-    List<CartItemImpl> getItems() {
+    public List<CartItemImpl> getItems() {
         if (items == null) {
             items = new ArrayList<>();
         }
