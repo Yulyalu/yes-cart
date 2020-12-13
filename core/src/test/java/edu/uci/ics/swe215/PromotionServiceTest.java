@@ -29,14 +29,14 @@ public class PromotionServiceTest extends BaseCoreDBTestCase {
 	public void testGetPromotionsByShopCode() {
 		List<Promotion> list = service.getPromotionsByShopCode("SHOP10", "EUR", false);
 		Assert.assertNotNull(list);
-		Assert.assertEquals(0, list.size());
+		Assert.assertEquals(6, list.size());
 	}
 	
 	@Test
 	public void testGetActivePromotionsByShopCode() {
 		List<Promotion> list = service.getPromotionsByShopCode("SHOP10", "EUR", true);
 		Assert.assertNotNull(list);
-		Assert.assertEquals(0, list.size());
+		Assert.assertEquals(3, list.size());
 	}
 	
 	@Test
@@ -100,7 +100,7 @@ public class PromotionServiceTest extends BaseCoreDBTestCase {
         service.create(promotion);
         
 		List<Promotion> list = service.findPromotions(0, 10, "", true, null);
-		Assert.assertEquals(4, list.size());
+		Assert.assertEquals(10, list.size());
 	}
 	
 	private Map<String, List> getFilter(boolean activate) {
@@ -115,27 +115,27 @@ public class PromotionServiceTest extends BaseCoreDBTestCase {
 	public void testFindActivePromotions() {
 		Map<String, List> filter = getFilter(true);
 		List<Promotion> list = service.findPromotions(0, 10, "", true, filter);
-		Assert.assertEquals(1, list.size());
+		Assert.assertEquals(7, list.size());
 	}
 	
 	@Test
 	public void testFindInActivePromotions() {
 		Map<String, List> filter = getFilter(false);
 		List<Promotion> list = service.findPromotions(0, 10, "", true, filter);
-		Assert.assertEquals(3, list.size());
+		Assert.assertEquals(6, list.size());
 	}
 	
 	
 	@Test
 	public void testFindActivePromotionCount() {
 		Map<String, List> filter = getFilter(true);
-		Assert.assertEquals(1, service.findPromotionCount(filter));
+		Assert.assertEquals(7, service.findPromotionCount(filter));
 	}
 	
 	@Test
 	public void testFindInactivePromotionCount() {
 		Map<String, List> filter = getFilter(false);
-		Assert.assertEquals(3, service.findPromotionCount(filter));
+		Assert.assertEquals(6, service.findPromotionCount(filter));
 	}
 
 }
